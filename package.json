@@ -1,0 +1,48 @@
+{
+  "name": "dasmodell",
+  "version": "0.0.1",
+  "description": "Model API with FastFy",
+  "main": "main.js",
+  "scripts": {
+    "clean": "rimraf ./build",
+    "build": "cross-env NODE_ENV=production webpack",
+    "start:dev": "cross-env NODE_ENV=development webpack serve",
+    "start": "node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcelFox/DasModell.git"
+  },
+  "keywords": [
+    "fastfy",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Marcel Fox",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/MarcelFox/DasModell/issues"
+  },
+  "homepage": "https://github.com/MarcelFox/DasModell#readme",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "fastify": "^3.22.0",
+    "fastify-express": "^0.3.3",
+    "html-webpack-plugin": "^5.3.2",
+    "path": "^0.12.7",
+    "rimraf": "^3.0.2",
+    "supervisor": "^0.12.0",
+    "webpack": "^5.55.1",
+    "webpack-dev-middleware": "^5.2.1",
+    "webpack-dev-server": "^4.3.0",
+    "webpack-node-externals": "^3.0.0",
+    "webpack-shell-plugin-next": "^2.2.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.8.0"
+  }
+}

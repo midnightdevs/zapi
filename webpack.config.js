@@ -8,13 +8,14 @@ const NODE_ENV =
 module.exports = {
   mode: NODE_ENV,
   watch: NODE_ENV === "development",
-  entry: path.resolve(__dirname, "main.js"),
+  devtool: 'inline-source-map',
+  entry: path.resolve(__dirname, "/src/main.ts"),
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "index.js",
+    filename: "bundle.js",
   },
   resolve: {
-    extensions: [".js", ".json"],
+    extensions: [".tsx", ".ts", ".js", ".json"],
     alias: {
       "@Domains": path.resolve(__dirname, "src/Domains"),
       "@Core": path.resolve(__dirname, "src/Core"),
@@ -25,25 +26,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.js/,
-        exclude: path.resolve(__dirname, "src/Core/App/Mongo-init.js"),
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-proposal-class-properties"],
-          },
-        },
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
   externals: [nodeExternals()],
   plugins: [
     new WebpackShellPluginNext({
-        onBuildExit: {
-          scripts: NODE_ENV === "development" ? ["supervisor build/index.js"] : [],
-          parallel: true,
-      }
+      onBuildExit: {
+        scripts:
+          NODE_ENV === "development" ? ["supervisor build/bundle.js"] : [],
+        parallel: true,
+      },
     }),
   ],
 };

@@ -1,12 +1,15 @@
-const fastify = require('fastify')();
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config.js');
-const devMiddleware = require('webpack-dev-middleware');
-
-const compiler = webpack(webpackConfig);
-const { publicPath } = webpackConfig.output;
+import Fastify from 'fastify'
+const fastify = Fastify({
+  logger: true
+})
 
 fastify.get('/', function (request, reply) {
-  reply.send({ hello: 'world' });
-});
-fastify.listen(8888);
+  reply.send({ hello: 'KORREKT' })
+})
+
+fastify.listen(3000, '0.0.0.0', (err, address) => {
+  if (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+})

@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rimraf ./build",
     "build": "cross-env NODE_ENV=production webpack",
-    "start:dev": "cross-env NODE_ENV=development webpack serve",
+    "serve:dev": "cross-env NODE_ENV=development supervisor build/index.js",
+    "start:dev": "cross-env NODE_ENV=development webpack",
     "start": "node build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,12 +27,14 @@
   },
   "homepage": "https://github.com/MarcelFox/DasModell#readme",
   "dependencies": {
+    "@babel/core": "^7.15.5",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/preset-env": "^7.15.6",
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "fastify": "^3.22.0",
     "fastify-express": "^0.3.3",
+    "fastify-webpack-hmr": "^3.0.0",
     "html-webpack-plugin": "^5.3.2",
     "path": "^0.12.7",
     "rimraf": "^3.0.2",
@@ -40,6 +43,7 @@
     "webpack-dev-middleware": "^5.2.1",
     "webpack-dev-server": "^4.3.0",
     "webpack-node-externals": "^3.0.0",
+    "webpack-shell-plugin": "^0.5.0",
     "webpack-shell-plugin-next": "^2.2.2"
   },
   "devDependencies": {

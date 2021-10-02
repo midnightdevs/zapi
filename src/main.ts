@@ -12,12 +12,12 @@ server.get('/', (request, reply) => {
 const serverConfig = {
   port: process.env.API_PORT || 3000,
   address: process.env.API_HOST || '0.0.0.0',
-}
+};
 
 server.listen(serverConfig.port, serverConfig.address, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
   }
-  console.log(`Server listening at ${address}`)
+  console.log(`Server listening at ${address}`);
 });

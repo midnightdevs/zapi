@@ -11,8 +11,8 @@ server.get('/', (request, reply) => {
 
 const serverConfig = {
   port: process.env.API_PORT || 3000,
-  address: process.env.API_HOST || "0.0.0.0",
-};
+  address: process.env.API_HOST || '0.0.0.0',
+}
 
 server.listen(serverConfig.port, serverConfig.address, (err, address) => {
   if (err) {

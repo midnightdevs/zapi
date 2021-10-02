@@ -17,8 +17,9 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
     alias: {
-      '@Domains': path.resolve(__dirname, 'src/Domains'),
-      '@Core': path.resolve(__dirname, 'src/Core'),
+      '@SuperClasses': path.resolve(__dirname, 'src/core/classes'),
+      '@Domains': path.resolve(__dirname, 'src/domains'),
+      '@Core': path.resolve(__dirname, 'src/core'),
       '@': path.resolve(__dirname, 'src'),
     },
   },

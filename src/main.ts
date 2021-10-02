@@ -1,9 +1,14 @@
 import fastify from 'fastify';
-import dotenv from 'dotenv';
+import 'dotenv/config';
+import wppRouterV1 from '@Domains/wppconnect/router/v1';
 
-dotenv.config();
+const server = fastify({
+  logger: {
+    level: process.env.LOG_LEVEL || 'info',
+  },
+});
 
-const server = fastify();
+void server.register(wppRouterV1, { prefix: '/v1' });
 
 server.get('/', (request, reply) => {
   void reply.send({ message: 'KORREKT' }).status(200);
@@ -16,8 +21,8 @@ const serverConfig = {
 
 server.listen(serverConfig.port, serverConfig.address, (err, address) => {
   if (err) {
-    console.error(err);
+    server.log.error(err);
     process.exit(1);
   }
-  console.log(`Server listening at ${address}`);
+  server.log.info(`Server listening at ${address}`);
 });

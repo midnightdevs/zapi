@@ -4,7 +4,7 @@
   "description": "Model API with FastFy",
   "main": "main.js",
   "scripts": {
-    "precommit": "eslint ./src && lint-staged",
+    "precommit": "lint-staged",
     "clean": "rimraf ./build",
     "build": "cross-env NODE_ENV=production webpack",
     "serve:dev": "cross-env NODE_ENV=development supervisor build/bundle.js",

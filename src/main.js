@@ -11,7 +11,7 @@ const server = fastify({
 server.register(wppRouterV1, { prefix: '/v1' });
 
 server.get('/', (request, reply) => {
-  reply.send({ message: "KORREKT" }).status(200);
+  reply.send({ message: 'KORREKT' }).status(200);
 });
 
 const serverConfig = {

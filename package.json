@@ -9,20 +9,9 @@
     "serve:dev": "cross-env NODE_ENV=development supervisor build/index.js",
     "start:dev": "cross-env NODE_ENV=development webpack",
     "start": "node build/index.js",
-    "lint": "eslint --ext js,jsx src",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": [
-        "lint-staged"
-      ]
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint"
-    ]
+    "lint": "eslint --ext js src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",

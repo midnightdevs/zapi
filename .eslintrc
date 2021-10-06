@@ -1,0 +1,54 @@
+{
+  "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "comments": 80
+      }
+    ],
+    "consistent-return": 2,
+    "indent": [
+      1,
+      2
+    ],
+    "no-else-return": 1,
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      1,
+      "always"
+    ],
+    "space-unary-ops": 2
+  },
+  "overrides": [
+    {
+      "files": [
+        "*js",
+        "*.json"
+      ],
+      "parserOptions": {
+        "babelOptions": {
+          "plugins": "@babel/plugin-proposal-class-properties"
+        }
+      },
+      "plugins": [
+        "@babel",
+        "json-format"
+      ]
+    }
+  ],
+  "parser": "babel-eslint",
+  "settings": {
+    "json/sort-package-json": "standard",
+    "json/ignore-files": [
+      "**/package-lock.json"
+    ],
+    "json/json-with-comments-files": [
+      "**/tsconfig.json",
+      ".vscode/**"
+    ]
+  }
+}

@@ -30,7 +30,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
-    "*.js": "eslint --ext .js,.json,.eslintrc --fix"
+    "src/**/*.{js,json}": "eslint --ext .js,.json,.eslintrc --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "@babel/core": "^7.15.5",

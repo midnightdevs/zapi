@@ -30,7 +30,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
-    "src/**/*.js": "eslint --ext .js,.json,.eslintrc --fix"
+    "*.js": "eslint --ext .js,.json,.eslintrc --fix"
   },
   "dependencies": {
     "@babel/core": "^7.15.5",

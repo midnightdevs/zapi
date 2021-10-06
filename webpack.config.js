@@ -8,7 +8,7 @@ const NODE_ENV =
 module.exports = {
   mode: NODE_ENV,
   watch: NODE_ENV === "development",
-  entry: path.resolve(__dirname, "main.js"),
+  entry: path.resolve(__dirname, "src/main.js"),
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "index.js",

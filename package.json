@@ -1,5 +1,5 @@
 {
-  "name": "dasmodell",
+  "name": "zAPI",
   "version": "0.0.1",
   "description": "Model API with FastFy",
   "main": "main.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MarcelFox/DasModell.git"
+    "url": "git+https://github.com/MarcelFox/zAPI.git"
   },
   "keywords": [
     "fastfy",
@@ -23,9 +23,9 @@
   "author": "Marcel Fox",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/MarcelFox/DasModell/issues"
+    "url": "https://github.com/MarcelFox/zAPI/issues"
   },
-  "homepage": "https://github.com/MarcelFox/DasModell#readme",
+  "homepage": "https://github.com/MarcelFox/zAPI#readme",
   "dependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-proposal-class-properties": "^7.14.5",

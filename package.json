@@ -9,7 +9,16 @@
     "serve:dev": "cross-env NODE_ENV=development supervisor build/index.js",
     "start:dev": "cross-env NODE_ENV=development webpack",
     "start": "node build/index.js",
+    "lint": "eslint --ext js,jsx src",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": ["lint-staged"]
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": ["eslint"]
   },
   "repository": {
     "type": "git",
@@ -47,6 +56,8 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.2.0",
     "rimraf": "^3.0.2",
     "webpack-cli": "^4.8.0"
   }

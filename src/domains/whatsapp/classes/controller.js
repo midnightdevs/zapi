@@ -1,6 +1,7 @@
 import WppClient from '@Core/clients/wppclient';
 export default class WhatsappController {
   wppSession = new WppClient('test');
+  phone_number = process.env.TEST_PHONE_NUMBER;
 
   static greet(request, reply) {
     return reply.send({ message: 'Hello' }).status(200);
@@ -21,7 +22,7 @@ export default class WhatsappController {
     }
     await this.wppSession.client.then((client) => {
       client
-        .sendText('+5548998680560@c.us', '👋 Hello from wppconnect!')
+        .sendText(`${phone_number}@c.us`, '👋 Hello from wppconnect!')
         .then((result) => {
           console.log('Result: ', result); //return object success
         })

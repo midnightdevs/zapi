@@ -1,28 +1,23 @@
 import WppClient from '@Core/clients/wppclient';
 export default class WhatsappController {
-  wppSession = new WppClient('test');
-  phone_number = process.env.TEST_PHONE_NUMBER;
+  constructor(session = 'session1') {
+    console.log('\n\nRunning Constructor\n\n');
+    this.wppSession = new WppClient('test');
+    this.phone_number = process.env.TEST_PHONE_NUMBER;
+  }
 
-  static greet(request, reply) {
+  greet(request, reply) {
     return reply.send({ message: 'Hello' }).status(200);
   }
 
-  static startSession(request, reply) {
-    if (!this.wppSession) {
-      console.log('\nI DO NOT HAVE AN INSTANCE\n');
-      this.wppSession = new WppClient('test');
-    }
+  startSession(request, reply) {
     return reply.send({ message: 'session started' }).status(200);
   }
 
-  static async sendMessage(request, reply) {
-    if (!this.wppSession) {
-      console.log('\nI DO NOT HAVE AN INSTANCE\n');
-      this.wppSession = new WppClient('test');
-    }
+  async sendMessage(request, reply) {
     await this.wppSession.client.then((client) => {
       client
-        .sendText(`${phone_number}@c.us`, '👋 Hello from wppconnect!')
+        .sendText(`${this.phone_number}@c.us`, '👋 Hello from wppconnect!')
         .then((result) => {
           console.log('Result: ', result); //return object success
         })
@@ -30,7 +25,6 @@ export default class WhatsappController {
           console.error('Error when sending: ', erro); //return object error
         });
     });
-
     return reply.send({ message: 'ok' }).status(200);
   }
 }

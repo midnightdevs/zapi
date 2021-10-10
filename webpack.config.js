@@ -25,13 +25,28 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|webp|tiff?)/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'webpack-sharp-loader',
+            options: {
+              processFunction: (sharp) => sharp.negate(),
+            },
+          },
+        ],
+      },
+      {
         test: /.js/,
         exclude: path.resolve(__dirname, 'src/Core/App/Mongo-init.js'),
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-class-properties'],
+            plugins: [
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-transform-runtime',
+            ],
           },
         },
       },
@@ -41,9 +56,10 @@ module.exports = {
   plugins: [
     new WebpackShellPluginNext({
       onBuildExit: {
-        scripts: NODE_ENV === 'development' ? ['supervisor build/index.js'] : [],
+        scripts:
+          NODE_ENV === 'development' ? ['supervisor build/index.js'] : [],
         parallel: true,
-      }
+      },
     }),
   ],
 };

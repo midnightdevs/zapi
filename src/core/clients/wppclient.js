@@ -1,8 +1,10 @@
 import { create, Whatsapp } from '@wppconnect-team/wppconnect';
 
 export default class WppClient {
-  constructor(sessionName = 'session1') {
-    this.client = this.getSession(sessionName);
+  constructor(sessionName) {
+    // TODO: session should be saved on a repository (db)
+    this.session = this.getSession(sessionName);
+    this.client = this.session.then((client) => client);
   }
 
   async getSession(session) {
@@ -10,7 +12,7 @@ export default class WppClient {
       session: session,
       puppeteerOptions: { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] },
     })
-      .then((client) => client)
+      .then((session) => session)
       .catch((error) => console.log(error));
   }
 }

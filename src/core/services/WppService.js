@@ -1,20 +1,17 @@
 import WppClient from '@Core/clients/wppclient';
-import Piii from 'piii';
-import piiiFilters from 'piii-filters';
+import Filters from '@Core/utility/filters';
 
 export default class WppService extends WppClient {
   constructor(session = 'session1', phone = process.env.TEST_PHONE_NUMBER) {
     super(session);
     this.phone_number = phone;
-    this.piii = new Piii({
-      filters: [...Object.values(piiiFilters)],
-    });
 
     this.client.then((client) => {
       client.onMessage((msg) => {
-        let replyMsg = 'Olá, como posso ajudar?';        
-        let msgHasBadWords = this.piii.has(msg.body);
+        let replyMsg = 'Olá, como posso ajudar?';
 
+        let msgHasBadWords = Filters.msgHasBadWords(msg.body);
+        
         // implement strikes, after 3 user is blocked (somehow)
         if (msgHasBadWords) {
           replyMsg = 'Vou fingir que não entendi, pode dizer de novo?';

@@ -37,7 +37,7 @@ module.exports = {
         ],
       },
       {
-        test: /.js/,
+        test: /.js$/,
         exclude: path.resolve(__dirname, 'src/Core/App/Mongo-init.js'),
         use: {
           loader: 'babel-loader',

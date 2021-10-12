@@ -1,8 +1,9 @@
 version: "3"
 
 services:
-  dasmodell:
-    image: node:16-alpine
+  zapi:
+    build: 
+      context: .
     working_dir: /app
     volumes:
       - ./:/app

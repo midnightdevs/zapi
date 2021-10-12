@@ -1,43 +1,55 @@
 {
-  "name": "dasmodell",
+  "name": "zAPI",
   "version": "0.0.1",
   "description": "Model API with FastFy",
-  "main": "main.js",
-  "scripts": {
-    "clean": "rimraf ./build",
-    "build": "cross-env NODE_ENV=production webpack",
-    "serve:dev": "cross-env NODE_ENV=development supervisor build/index.js",
-    "start:dev": "cross-env NODE_ENV=development webpack",
-    "start": "node build/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MarcelFox/DasModell.git"
-  },
   "keywords": [
     "fastfy",
     "nodejs",
     "javascript"
   ],
-  "author": "Marcel Fox",
-  "license": "GPL-3.0",
+  "homepage": "https://github.com/MarcelFox/zAPI#readme",
   "bugs": {
-    "url": "https://github.com/MarcelFox/DasModell/issues"
+    "url": "https://github.com/MarcelFox/zAPI/issues"
   },
-  "homepage": "https://github.com/MarcelFox/DasModell#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcelFox/zAPI.git"
+  },
+  "license": "GPL-3.0",
+  "author": "Marcel Fox",
+  "main": "main.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "build": "cross-env NODE_ENV=production webpack",
+    "clean": "rimraf ./build",
+    "lint": "eslint --ext .js,.json,.eslintrc .eslintrc src/",
+    "prepare": "husky install",
+    "serve:dev": "cross-env NODE_ENV=development supervisor build/index.js",
+    "start": "node build/index.js",
+    "start:dev": "cross-env NODE_ENV=development webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,json}": "eslint --ext .js,.json,.eslintrc --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/preset-env": "^7.15.6",
+    "@wppconnect-team/wppconnect": "^1.9.1",
     "babel-loader": "^8.2.2",
-    "cross-env": "^7.0.3",
     "fastify": "^3.22.0",
     "fastify-express": "^0.3.3",
     "fastify-webpack-hmr": "^3.0.0",
     "html-webpack-plugin": "^5.3.2",
     "path": "^0.12.7",
-    "rimraf": "^3.0.2",
+    "puppeteer": "^10.4.0",
+    "sharp": "^0.29.1",
     "supervisor": "^0.12.0",
     "webpack": "^5.55.1",
     "webpack-dev-middleware": "^5.2.1",
@@ -47,6 +59,19 @@
     "webpack-shell-plugin-next": "^2.2.2"
   },
   "devDependencies": {
+    "@babel/eslint-plugin": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "husky": "^7.0.2",
+    "json-loader": "^0.5.7",
+    "lint-staged": "^11.2.0",
+    "piii": "^4.0.2",
+    "piii-filters": "^1.0.0",
+    "rimraf": "^3.0.2",
     "webpack-cli": "^4.8.0"
   }
 }

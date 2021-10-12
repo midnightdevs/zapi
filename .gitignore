@@ -1,6 +1,9 @@
 # vscode
 .vscode*
 
+# removing wordFilters:
+src/core/wordFilters.json
+
 # tokens
 tokens*
 
